@@ -16,7 +16,10 @@ Item {
     readonly property string ramValue: {
         if (isNaN(ramPercentage))
             return "...";
-        return Utils.formatBytes(ramUsedSensor.value) + "/" + Utils.formatBytes(ramTotalSensor.value) + "G";
+        var value = Utils.formatBytes(ramUsedSensor.value).toString();
+        if (plasmoid.configuration.stabilizeRam)
+            value = value.padStart(4, " ");
+        return value + "/" + Utils.formatBytes(ramTotalSensor.value) + "G";
     }
 
     Sensors.Sensor {

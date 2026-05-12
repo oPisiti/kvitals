@@ -34,7 +34,10 @@ Item {
     readonly property string gpuValue: {
         if (isNaN(gpuUsageNumber))
             return "";
-        return Math.round(gpuUsageNumber) + "%";
+        var value = Math.round(gpuUsageNumber).toString();
+        if (plasmoid.configuration.stabilizeGpu)
+            value = value.padStart(2, " ");
+        return value + "%";
     }
 
     readonly property string gpuRamValue: {

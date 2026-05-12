@@ -15,7 +15,10 @@ Item {
     readonly property string cpuValue: {
         if (isNaN(cpuNumericValue))
             return "...";
-        return Math.round(cpuNumericValue) + "%";
+        var value = Math.round(cpuNumericValue).toString();
+        if (plasmoid.configuration.stabilizeCpu)
+            value = value.padStart(2, " ");
+        return value + "%";
     }
 
     // Frequency in MHz from KSysGuard (unit type 302 = MHz); displays as GHz above 1000 MHz
