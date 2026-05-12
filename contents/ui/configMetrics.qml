@@ -31,6 +31,21 @@ KCM.SimpleKCM {
     property bool cfg_splitGpu: false
     property bool cfg_showCpuFreq: false
 
+    property bool cfg_stabilizableCpu;
+    property bool cfg_stabilizableRam;
+    property bool cfg_stabilizableTemp;
+    property bool cfg_stabilizableGpu;
+    property bool cfg_stabilizableBattery;
+    property bool cfg_stabilizablePower;
+    property bool cfg_stabilizableNetwork;
+    property bool cfg_stabilizeCpu;
+    property bool cfg_stabilizeRam;
+    property bool cfg_stabilizeTemp;
+    property bool cfg_stabilizeGpu;
+    property bool cfg_stabilizeBattery;
+    property bool cfg_stabilizePower;
+    property bool cfg_stabilizeNetwork;
+
     property var ifaceList: ["auto"]
 
     readonly property var allKeys: ["cpu", "ram", "temp", "gpu", "bat", "pwr", "net"]
@@ -161,6 +176,74 @@ KCM.SimpleKCM {
         }
     }
 
+    // Determines if the Stabilize checkbox should be visible
+    function isStabilizable(key) {
+        switch (key) {
+            case "cpu":
+                return cfg_stabilizableCpu;
+            case "ram":
+                return cfg_stabilizableRam;
+            case "temp":
+                return cfg_stabilizableTemp;
+            case "gpu":
+                return cfg_stabilizableGpu;
+            case "bat":
+                return cfg_stabilizableBattery;
+            case "pwr":
+                return cfg_stabilizablePower;
+            case "net":
+                return cfg_stabilizableNetwork;
+        }
+        return false;
+    }
+
+    // Reads the value of the Stabilize variable
+    function isStabilizeChecked(key, val) {
+        switch (key) {
+            case "cpu":
+                return cfg_stabilizeCpu;
+            case "ram":
+                return cfg_stabilizeRam;
+            case "temp":
+                return cfg_stabilizeTemp;
+            case "gpu":
+                return cfg_stabilizeGpu;
+            case "bat":
+                return cfg_stabilizeBattery;
+            case "pwr":
+                return cfg_stabilizePower;
+            case "net":
+                return cfg_stabilizeNetwork;
+        }
+    }
+
+    // Sets the value of the Stabilize checkbox into the corresponding variable
+    function setStabilize(key, val) {
+        switch (key) {
+            case "cpu":
+                cfg_stabilizeCpu = val;
+                break;
+            case "ram":
+                cfg_stabilizeRam = val;
+                break;
+            case "temp":
+                cfg_stabilizeTemp = val;
+                break;
+            case "gpu":
+                cfg_stabilizeGpu = val;
+                break;
+            case "bat":
+                cfg_stabilizeBattery = val;
+                break;
+            case "pwr":
+                cfg_stabilizePower = val;
+                break;
+            case "net":
+                cfg_stabilizeNetwork = val;
+                break;
+        }
+    }
+
     function moveMetric(fromIndex, toIndex) {
         var keys = currentOrder.slice();
         var item = keys.splice(fromIndex, 1)[0];
@@ -270,6 +353,21 @@ KCM.SimpleKCM {
                             enabled: metricsPage.isChecked(modelData)
 
                             onToggled: metricsPage.setCompactChecked(modelData, checked)
+                        }
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
+
+                        visible: metricsPage.isStabilizable(modelData)
+
+                        CheckBox {
+                            text: i18n("Stabilize")
+                            checked: metricsPage.isStabilizeChecked(modelData)
+                            enabled: metricsPage.isChecked(modelData)
+
+                            onToggled: metricsPage.setStabilize(modelData, checked)
                         }
                     }
                 }
