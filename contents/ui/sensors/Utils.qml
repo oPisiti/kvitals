@@ -10,14 +10,21 @@ QtObject {
         return gb.toFixed(1);
     }
 
-    function formatRate(bytesPerSec) {
+    function formatRate(bytesPerSec, stabilized) {
         if (typeof bytesPerSec !== "number" || isNaN(bytesPerSec))
             return "...";
         var kbps = bytesPerSec / 1024;
         if (kbps >= 1024) {
-            return (kbps / 1024).toFixed(1) + "M";
+            kbps = (kbps / 1024).toFixed(1).toString();
+            if (stabilized)
+                kbps = kbps.padStart(5, " ");
+            return kbps + "M";
         }
-        return Math.max(0, kbps).toFixed(1) + "K";
+
+        kbps = Math.max(0, kbps).toFixed(1).toString();
+        if (stabilized)
+            kbps = kbps.padStart(5, " ");
+        return kbps + "K";
     }
 
     function sensorValueOrNaN(sensor) {

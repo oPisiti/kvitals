@@ -15,12 +15,12 @@ Item {
 
     readonly property string netDownValue: {
         if (netDownSensor.status !== Sensors.Sensor.Ready) return "...";
-        return Utils.formatRate(netDownSensor.value);
+        return Utils.formatRate(netDownSensor.value, plasmoid.configuration.stabilizeNetwork);
     }
 
     readonly property string netUpValue: {
         if (netUpSensor.status !== Sensors.Sensor.Ready) return "...";
-        return Utils.formatRate(netUpSensor.value);
+        return Utils.formatRate(netUpSensor.value, plasmoid.configuration.stabilizeNetwork);
     }
 
     Sensors.Sensor {
