@@ -163,5 +163,47 @@
         <entry name="batteryCriticalThreshold" type="Int">
             <default>15</default>
         </entry>
+        <entry name="stabilizableCpu" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="stabilizableRam" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="stabilizableTemp" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizableGpu" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="stabilizableBattery" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizablePower" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizableNetwork" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeCpu" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeRam" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeTemp" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeGpu" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeBattery" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizePower" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="stabilizeNetwork" type="Bool">
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
