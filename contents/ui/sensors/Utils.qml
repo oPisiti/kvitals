@@ -10,20 +10,20 @@ QtObject {
         return gb.toFixed(1);
     }
 
-    function formatRate(bytesPerSec, stabilized) {
+    function formatRate(bytesPerSec, stabilized, strLength) {
         if (typeof bytesPerSec !== "number" || isNaN(bytesPerSec))
             return "...";
         var kbps = bytesPerSec / 1024;
         if (kbps >= 1024) {
             kbps = (kbps / 1024).toFixed(1).toString();
             if (stabilized)
-                kbps = kbps.padStart(5, " ");
+                kbps = kbps.padStart(strLength, " ");
             return kbps + "M";
         }
 
         kbps = Math.max(0, kbps).toFixed(1).toString();
         if (stabilized)
-            kbps = kbps.padStart(5, " ");
+            kbps = kbps.padStart(strLength, " ");
         return kbps + "K";
     }
 

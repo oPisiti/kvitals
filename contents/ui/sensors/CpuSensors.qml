@@ -17,7 +17,7 @@ Item {
             return "...";
         var value = Math.round(cpuNumericValue).toString();
         if (plasmoid.configuration.stabilizeCpu)
-            value = value.padStart(2, " ");
+            value = value.padStart(plasmoid.configuration.stabilizeCpuLen, " ");
         return value + "%";
     }
 

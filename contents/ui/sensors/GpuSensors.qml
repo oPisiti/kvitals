@@ -36,7 +36,7 @@ Item {
             return "";
         var value = Math.round(gpuUsageNumber).toString();
         if (plasmoid.configuration.stabilizeGpu)
-            value = value.padStart(2, " ");
+            value = value.padStart(plasmoid.configuration.stabilizeGpuLen, " ");
         return value + "%";
     }
 

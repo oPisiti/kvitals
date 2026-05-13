@@ -18,7 +18,7 @@ Item {
             return "...";
         var value = Utils.formatBytes(ramUsedSensor.value).toString();
         if (plasmoid.configuration.stabilizeRam)
-            value = value.padStart(4, " ");
+            value = value.padStart(plasmoid.configuration.stabilizeRamLen, " ");
         return value + "/" + Utils.formatBytes(ramTotalSensor.value) + "G";
     }
 
