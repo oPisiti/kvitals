@@ -205,5 +205,26 @@
         <entry name="stabilizeNetwork" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="stabilizeCpuLen" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="stabilizeRamLen" type="Int">
+            <default>1</default>
+        </entry>
+        <entry name="stabilizeTempLen" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="stabilizeGpuLen" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="stabilizeBatteryLen" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="stabilizePowerLen" type="Int">
+            <default>3</default>
+        </entry>
+        <entry name="stabilizeNetworkLen" type="Int">
+            <default>5</default>
+        </entry>
     </group>
 </kcfg>

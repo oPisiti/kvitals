@@ -58,6 +58,29 @@ PlasmoidItem {
 
     property int updateInterval: Plasmoid.configuration.updateInterval || 2000
 
+    property bool stabilizableCpu: Plasmoid.configuration.stabilizableCpu
+    property bool stabilizableRam: Plasmoid.configuration.stabilizableRam
+    property bool stabilizableTemp: Plasmoid.configuration.stabilizableTemp
+    property bool stabilizableGpu: Plasmoid.configuration.stabilizableGpu
+    property bool stabilizableBattery: Plasmoid.configuration.stabilizableBattery
+    property bool stabilizablePower: Plasmoid.configuration.stabilizablePower
+    property bool stabilizableNetwork: Plasmoid.configuration.stabilizableNetwork
+    property bool stabilizeCpu: Plasmoid.configuration.stabilizeCpu
+    property bool stabilizeRam: Plasmoid.configuration.stabilizeRam
+    property bool stabilizeTemp: Plasmoid.configuration.stabilizeTemp
+    property bool stabilizeGpu: Plasmoid.configuration.stabilizeGpu
+    property bool stabilizeBattery: Plasmoid.configuration.stabilizeBattery
+    property bool stabilizePower: Plasmoid.configuration.stabilizePower
+    property bool stabilizeNetwork: Plasmoid.configuration.stabilizeNetwork
+    property int stabilizeCpuLen: Plasmoid.configuration.stabilizeCpuLen
+    property int stabilizeRamLen: Plasmoid.configuration.stabilizeRamLen
+    property int stabilizeTempLen: Plasmoid.configuration.stabilizeTempLen
+    property int stabilizeGpuLen: Plasmoid.configuration.stabilizeGpuLen
+    property int stabilizeBatteryLen: Plasmoid.configuration.stabilizeBatteryLen
+    property int stabilizePowerLen: Plasmoid.configuration.stabilizePowerLen
+    property int stabilizeNetworkLen: Plasmoid.configuration.stabilizeNetworkLen
+
+
     // --- Color configuration properties ---
 
     property bool useCustomColors: Plasmoid.configuration.useCustomColors

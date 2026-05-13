@@ -45,6 +45,13 @@ KCM.SimpleKCM {
     property bool cfg_stabilizeBattery;
     property bool cfg_stabilizePower;
     property bool cfg_stabilizeNetwork;
+    property int cfg_stabilizeCpuLen;
+    property int cfg_stabilizeRamLen;
+    property int cfg_stabilizeTempLen;
+    property int cfg_stabilizeGpuLen;
+    property int cfg_stabilizeBatteryLen;
+    property int cfg_stabilizePowerLen;
+    property int cfg_stabilizeNetworkLen;
 
     property var ifaceList: ["auto"]
 
@@ -198,7 +205,7 @@ KCM.SimpleKCM {
     }
 
     // Reads the value of the Stabilize variable
-    function isStabilizeChecked(key, val) {
+    function isStabilizeChecked(key) {
         switch (key) {
             case "cpu":
                 return cfg_stabilizeCpu;
@@ -240,6 +247,54 @@ KCM.SimpleKCM {
                 break;
             case "net":
                 cfg_stabilizeNetwork = val;
+                break;
+        }
+    }
+
+    // Reads the value of the Stabilize character length
+    function getStabilizeLength(key) {
+        switch (key) {
+            case "cpu":
+                return cfg_stabilizeCpuLen;
+            case "ram":
+                return cfg_stabilizeRamLen;
+            case "temp":
+                return cfg_stabilizeTempLen;
+            case "gpu":
+                return cfg_stabilizeGpuLen;
+            case "bat":
+                return cfg_stabilizeBatteryLen;
+            case "pwr":
+                return cfg_stabilizePowerLen;
+            case "net":
+                return cfg_stabilizeNetworkLen;
+        }
+        return 1;
+    }
+
+    // Sets the value of the Stabilize character length into the corresponding variable
+    function setStabilizeLength(key, val) {
+        switch (key) {
+            case "cpu":
+                cfg_stabilizeCpuLen = val;
+                break;
+            case "ram":
+                cfg_stabilizeRamLen = val;
+                break;
+            case "temp":
+                cfg_stabilizeTempLen = val;
+                break;
+            case "gpu":
+                cfg_stabilizeGpuLen = val;
+                break;
+            case "bat":
+                cfg_stabilizeBatteryLen = val;
+                break;
+            case "pwr":
+                cfg_stabilizePowerLen = val;
+                break;
+            case "net":
+                cfg_stabilizeNetworkLen = val;
                 break;
         }
     }
@@ -368,6 +423,26 @@ KCM.SimpleKCM {
                             enabled: metricsPage.isChecked(modelData)
 
                             onToggled: metricsPage.setStabilize(modelData, checked)
+                        }
+
+                        Slider {
+                            id: lenSlider
+                            Kirigami.FormData.label: i18n("Character count:")
+                            from: 1
+                            to: 6
+                            stepSize: 1
+                            value: metricsPage.getStabilizeLength(modelData)
+                            onMoved: {
+                              const val = Number(lenSlider.value) || 1;
+                              metricsPage.setStabilizeLength(modelData, val);
+                              console.log("Saved someKey =", val);
+                            }
+                            enabled: metricsPage.isStabilizeChecked(modelData)
+                        }
+
+                        Label {
+                            text: lenSlider.value + " chars"
+                            opacity: 0.7
                         }
                     }
                 }
