@@ -1,6 +1,6 @@
 {
     "KPlugin": {
-        "Id": "org.kde.plasma.kvitals",
+        "Id": "org.kde.plasma.kvitals-forked",
         "Name": "KVitals",
         "Description": "Live system vitals in the panel: CPU, RAM, Temp, Battery, Network",
         "Icon": "utilities-system-monitor",
